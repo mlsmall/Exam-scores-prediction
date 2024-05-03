@@ -1,4 +1,7 @@
 pandas
 numpy
 seaborn
--e . # for pip install "-e" = editable mode "." = current directory
+matplotlib
+scikit-learn
+catboost
+#-e . # for pip install "-e" = editable mode "." = current directory
