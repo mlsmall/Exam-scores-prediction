@@ -1,4 +1,4 @@
 pandas
 numpy
 seaborn
--e .
+-e . # for pip install "-e" = editable mode "." = current directory
