@@ -5,4 +5,6 @@ matplotlib
 scikit-learn
 catboost
 xgboost
+dill
+
 #-e . # for pip install "-e" = editable mode "." = current directory
