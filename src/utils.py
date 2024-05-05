@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 
 from exception import CustomException
 
-def save_object(obj, file_path):
+def save_object(file_path, obj):
     """This function saves an object in a pickle file"""
     try:
         dir_path = os.path.dirname(file_path)

@@ -18,13 +18,9 @@ from logger import logging
 
 from utils import save_object
 
-@dataclass # This simplifies the creation of a class that has data
-class DataTransformationConfig:
-    preprocessor_obj_file_path = os.path.join('artifacts', 'preprocessor.pkl')
-    
 class DataTransformation:
     def __init__(self):
-        self.data_transformation_config = DataTransformationConfig()
+        self.data_transformation_config = os.path.join('artifacts', 'preprocessor.pkl')
         
     def get_data_transformer_object(self):
         """
@@ -71,7 +67,7 @@ class DataTransformation:
             
             target_column_name = 'math_score'
             numerical_columns = ['reading_score', 'writing_score']
-            print(train_df.columns)
+
             input_feature_train_df = train_df.drop(target_column_name, axis=1)
             target_feature_train_df = train_df[target_column_name]
             
@@ -87,15 +83,9 @@ class DataTransformation:
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
             
             logging.info("Saving the preprocessor object")
-            save_object(file_path=self.data_transformation_config.preprocessor_obj_file_path, obj=preprocessing_obj)
+            save_object(file_path=self.data_transformation_config, obj=preprocessing_obj)
             
-            return train_arr, test_arr, self.data_transformation_config.preprocessor_obj_file_path
+            return train_arr, test_arr, self.data_transformation_config
         
         except Exception as e:
             raise CustomException(e, sys)
-            
-            
-
-if __name__ == '__main__':
-    obj = DataIngestion()
-    

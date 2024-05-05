@@ -10,7 +10,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
-from components.data_transformation import DataTransformationConfig, DataTransformation
+from components.data_transformation import DataTransformation
 
 
 @dataclass #to define your data classes
