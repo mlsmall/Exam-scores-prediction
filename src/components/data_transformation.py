@@ -4,7 +4,6 @@ import os
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
-from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -60,9 +59,9 @@ class DataTransformation:
         try:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
-            logging.info("Read the train and completed")
+            logging.info("Created the train and test dataframes")
             
-            logging.info("Obtaining the preprocessor object")
+            logging.info("Creating the preprocessing object")
             preprocessing_obj = self.get_data_transformer_object()
             
             target_column_name = 'math_score'
@@ -85,7 +84,7 @@ class DataTransformation:
             logging.info("Saving the preprocessor object")
             save_object(file_path=self.data_transformation_config, obj=preprocessing_obj)
             
-            return train_arr, test_arr, self.data_transformation_config
+            return train_arr, test_arr
         
         except Exception as e:
             raise CustomException(e, sys)

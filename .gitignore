@@ -114,7 +114,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.artifacts
 .env
 .venv
 env/
@@ -149,3 +148,4 @@ cython_debug/
 
 Notes.txt
 logs/
+scratch.py

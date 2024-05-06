@@ -11,9 +11,10 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 from components.data_transformation import DataTransformation
+from components.model_trainer import ModelTrainer, ModelTrainerConfig
 
 
-@dataclass #to define your data classes
+@dataclass # to define your data classes
 class DataIngestionConfig: # inputs given to the data_ingestion.py component
     train_data_path: str=os.path.join("artifacts", "train.csv") # all the output will be stored in this folder 
     test_data_path: str=os.path.join("artifacts", "test.csv")
@@ -24,7 +25,7 @@ class DataIngestion:
         self.ingestion_config = DataIngestionConfig() # The three paths from DataIngestionConfig class will be stored in this object
         
     def initiatite_data_ingestion(self):
-        """ Function to read code from your database(mongoDB, SQL, etc) and store it in a csv file """
+        """ Function to read code from your database(mongoDB, SQL, etc) and create train and test csv files """
         logging.info("Entered the data ingestion component")
         try:
             df = pd.read_csv('notebooks/data/students.csv') # Or mongoDB or SQL
@@ -49,7 +50,10 @@ class DataIngestion:
         
 if __name__ == '__main__':
     obj = DataIngestion()
-    train_data, test_data = obj.initiatite_data_ingestion()
+    train_data_path, test_data_path = obj.initiatite_data_ingestion()
     
     data_transformation_obj = DataTransformation()
-    data_transformation_obj.initiate_data_transformation(train_data, test_data)
+    train_arr, test_arr = data_transformation_obj.initiate_data_transformation(train_data_path, test_data_path)
+    
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_training(train_arr, test_arr))
