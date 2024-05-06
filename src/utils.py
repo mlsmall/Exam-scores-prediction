@@ -7,13 +7,13 @@ import dill
 import numpy as np
 import pandas as p
 
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score
 
 from exception import CustomException
 
 def save_object(file_path, obj):
-    """This function saves an object in a pickle file"""
+    """This function saves an object as a pickle file"""
     try:
         dir_path = os.path.dirname(file_path)
         os.makedirs(dir_path, exist_ok=True)
@@ -25,14 +25,24 @@ def save_object(file_path, obj):
         raise CustomException(e, sys)
     
     
-def evaluate_models(X_train, y_train, X_test, y_test, models):
-    """This trains and evaluates the model"""
-    try:
+def evaluate_models(X_train, y_train, X_test, y_test, models, params):
+    """
+    This function trains and evaluates the model using the R2 score.
+    It returns a dictionary with the model name and the R2 score for the train and test datasets.
+    """
+    try:  
         report = {}
     
         for i in range(len(list(models))):
             model = list(models.values())[i]
+            param = list(params.values())[i]
+             
+            gs = GridSearchCV(model, param, cv=3) # cv = cross validation
+            gs.fit(X_train, y_train) # grid search using the model parameters
+            
+            model.set_params(**gs.best_params_) # sets the best parameters to the model
             model.fit(X_train, y_train) # Train the model
+             
             y_train_pred = model.predict(X_train)
             y_test_pred = model.predict(X_test)         
             

@@ -44,14 +44,48 @@ class ModelTrainer:
                 "Decision Tree": DecisionTreeRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
                 "AdaBoost": AdaBoostRegressor(),
-                "XGBoost": XGBRegressor(),
-                "CatBoost": CatBoostRegressor(),
+                "XGBoost": XGBRegressor(), # Symmetric trees, more efficient for categories
+                "CatBoost": CatBoostRegressor(), # Asymetric trees
                 "Linear Regression": LinearRegression(),
-                "K-Nearest Neighbors": KNeighborsRegressor() 
             }
             
+            params = {
+                "Random Forest": {
+                    # 'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                    # 'max_features':['sqrt','log2',None],
+                    'n_estimators': [8, 16, 32, 64, 128, 256]
+                },
+                "Decision Tree": {
+                    'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                    # "splitter": ["best", "random"],
+                    # "max_features": ["sqrt", "log2"]
+                },
+                "Gradient Boosting": {
+                    # "loss": ['squared_error', 'huber', 'absolute_error', 'quantile'],
+                    "learning_rate": [0.01, 0.05, 0.1, 0.2],
+                    "subsample": [0.6, 0.7, 0.8, 0.9],
+                    "n_estimators":  [8, 16, 32, 64, 128, 256]
+                },
+                "AdaBoost": {
+                    # "loss": ["linear", "square", "exponential"],
+                    "learning_rate": [0.01, 0.05, 0.1, 0.2],
+                    "n_estimators":  [8, 16, 32, 64, 128, 256]
+                }, 
+                "XGBoost": {
+                    "learning_rate": [0.01, 0.05, 0.1, 0.2],
+                    "n_estimators":  [8, 16, 32, 64, 128, 256]
+                },
+                "CatBoost": {
+                    "learning_rate": [0.01, 0.05, 0.1, 0.2],
+                    "depth": [6, 8, 10],
+                    'iterations': [30, 50, 100]
+                },
+                "Linear Regression": {}
+             }
+            
             logging.info("Training and evaluating models")
-            model_report: dict = evaluate_models(X_train, y_train, X_test, y_test, models)
+            model_report: dict = evaluate_models(X_train, y_train, X_test, y_test, models, params)
+            #print(model_report)
         
             # To get the best model score and name from the model report dictionary
             best_model_name = max(model_report, key=model_report.get) # key=model_report.get will return the key with the highest value
