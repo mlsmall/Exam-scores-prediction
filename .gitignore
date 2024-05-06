@@ -146,6 +146,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-Notes.txt
+notes.txt
 logs/
 scratch.py
