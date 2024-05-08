@@ -35,7 +35,7 @@ The application was built using Flask.
 
 ## User Interface
 
-<img src="https://github.com/mlsmall/machine-learning-project/blob/main/interface.png" width="800" />)
+<img src="https://github.com/mlsmall/machine-learning-project/blob/main/interface.png" width="725" />)
 
 Select the values for the independent variables and press the "Predict the Math Score" button to get the predicted value.
 
