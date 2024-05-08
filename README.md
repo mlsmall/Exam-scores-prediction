@@ -35,7 +35,7 @@ The application was built using Flask.
 
 ## User Interface
 
-![User Interface](./interface.png)
+![User Interface](./interface.png = 200x)
 
 Select the values for the independent variables and press the "Predict the Math Score" button to get the predicted value.
 
