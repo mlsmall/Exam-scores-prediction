@@ -67,8 +67,8 @@ Select the values for the independent variables and press the "Predict the Math 
 
 ## Exploratory Data Analysis Notebook
 
-Link: [EDA Notebook](https://github.com/mlsmall/Exam-scores-prediction/blob/main/notebooks/EDA%20-%20Student%20Scores.ipynb))
+Link: [EDA Notebook](https://github.com/mlsmall/Exam-scores-prediction/blob/main/notebooks/EDA%20-%20Student%20Scores.ipynb)
 
 ## Model Training  Notebook
 
-Link: [Model Training Notebook](https://github.com/mlsmall/Exam-scores-prediction/blob/main/notebooks/Model%20Training.ipynb))
+Link: [Model Training Notebook](https://github.com/mlsmall/Exam-scores-prediction/blob/main/notebooks/Model%20Training.ipynb)
