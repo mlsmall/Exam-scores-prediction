@@ -1,3 +1,6 @@
+"""
+The project package is created using this setup.py file.
+"""
 from setuptools import setup, find_packages
 
 HYPHEN_E_DOT = '-e .'
