@@ -49,7 +49,7 @@ Select the values for the independent variables and press the "Predict the Math 
   * In this phase a ColumnTransformer Pipeline is created and includes the numerical and categorical pipelines.
   * For numeric variables, a SimpleImputer is applied to fill in missing variables with a median strategy, and then StandardScaler is applied to standardize features by removing the mean and scaling to unit variance.
   * For categorical variables, a SimpleImputer is applied with the most frequent strategy, then One Hot Encoding, and finally a StandardScaler.
-  * This data transformation pipeline is saved as a pickle file called preprocessor.pkl
+  * This data transformation pipeline is saved as a pickle file called preprocessor.pkl.
 
 ### 3. Model Training: 
  * In this phase the base model is trained and evaluated against the dataset.
